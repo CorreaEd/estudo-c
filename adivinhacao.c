@@ -11,29 +11,40 @@ int main() {
     srand(segundos);
 
     int numerogrande = rand();
-
     int numerosecreto = numerogrande % 100;
-    int chute;
-    int tentativas = 1;
     double pontos = 1000;
+    int tentativas = 1;
+    int qtdtentativas;
     int acertou = 0;
+    int chute;
     int nivel;
-    
+
     printf("Qual o nível de dificuldade?\n");
     printf("(1) Fácil   (2) Médio   (3) Difícil\n\n");
     printf("Escolha:    ");
     scanf("%d", &nivel);
 
-    int qtdtentativas;
-    if (nivel == 1) {
-        qtdtentativas = 20;
+    switch(nivel) {
+        case 1:
+            qtdtentativas = 20;
+            break;
+        case 2:
+            qtdtentativas = 15;
+            break;
+        default:
+            qtdtentativas = 6;
+            break;    
     }
-    else if (nivel == 2) {
-        qtdtentativas = 15;
-    }
-    else {
-        qtdtentativas = 6;
-    }
+    
+    /*  if (nivel == 1) {
+            qtdtentativas = 20;
+        }
+        else if (nivel == 2) {
+            qtdtentativas = 15;
+        }
+        else {
+            qtdtentativas = 6;
+        } */
 
     for(int i = 1; i <= qtdtentativas; i++) {
 
