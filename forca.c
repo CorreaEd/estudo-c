@@ -4,7 +4,6 @@
 #include <time.h>
 #include "forca.h"
 
-/* variáveis globais */
 char palavrasecreta[TAMANHO_PALAVRA];
 char chutes[26];
 int chutesdados = 0;
@@ -14,7 +13,6 @@ void abertura() {
     printf("*     Jogo de Forca     *\n");
     printf("*************************\n\n");
 }
-
 void chuta() {
     char chute;
     scanf(" %c", &chute);
@@ -22,7 +20,6 @@ void chuta() {
     chutes[chutesdados] = chute;
     (chutesdados)++;
 }
-
 void desenhaforca() { 
 
     int erros = chuteserrados();
@@ -52,7 +49,6 @@ void desenhaforca() {
     }
     printf("\n");
 }
-
 void adicionapalavra() {
 
     char quer;
@@ -61,7 +57,6 @@ void adicionapalavra() {
     scanf(" %c", &quer);
 
     if(quer == 'S') {
-
         char novapalavra[TAMANHO_PALAVRA];
         printf("Qual a nova palavra? ");
         scanf("%s", novapalavra);
@@ -87,7 +82,6 @@ void adicionapalavra() {
         fclose(f);
     }
 }
-
 void escolhepalavra() {
     FILE* f;
 
@@ -96,7 +90,6 @@ void escolhepalavra() {
         printf("Desculpe, banco de dados não disponível\n\n");
         exit(1);
     }
-    
     int qtdpalavras;
     fscanf(f, "%d", &qtdpalavras);
 
@@ -106,20 +99,16 @@ void escolhepalavra() {
     for(int i = 0; i <= randomico; i++) {
         fscanf(f, "%s", palavrasecreta);
     }
-
     fclose(f);
 }
-
 int acertou() {
     for (int i = 0; i < strlen(palavrasecreta); i++) {
         if (!jachutou(palavrasecreta[i])) {
             return 0;
         }
     }
-
     return 1;    
 }
-
 int chuteserrados() {
         int erros = 0;
     
@@ -139,12 +128,10 @@ int chuteserrados() {
     }
     return erros;
 }
-
 int enforcou() {
 
     return chuteserrados() >= 5;
 }
-
 int jachutou(char letra) {
     int achou = 0;
 
@@ -157,20 +144,15 @@ int jachutou(char letra) {
 
     return achou;
 }
-
 int main() {
-
     escolhepalavra();
     abertura();
 
     do {
-
         desenhaforca();
         chuta();
 
     } while (!acertou() && !enforcou());
-    
-
     if(acertou()) {
         printf("__________________,__,_________________________\n");
         printf("_________________/ \\/ \\,'| ____________________\n");
